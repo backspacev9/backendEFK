@@ -1,2 +1,8 @@
-const test: string = "Hello12";
-console.log(test);
+import express from "express";
+
+const app = express();
+app.use("/api/category");
+
+app.listen(3000, () => {
+  console.log("server started");
+});
