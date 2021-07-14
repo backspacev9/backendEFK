@@ -2,8 +2,9 @@ import express from "express";
 import categories from "./categoriesPage/router";
 
 const app = express();
+const PORT = process.env.PORT || 3030;
 app.use("/api/category", categories);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("server started");
 });
