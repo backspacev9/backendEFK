@@ -8,6 +8,6 @@ app.get("/", (req, res) => {
   res.end(`asdsadasd`);
 });
 
-app.listen(PORT, () => {
-  console.log("server started");
-});
+// app.listen(PORT, () => {
+//   console.log("server started");
+// });
