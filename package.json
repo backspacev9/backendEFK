@@ -1,7 +1,7 @@
 {
     "name": "backendefk",
     "scripts": {
-        "start": "node build/app.js",
+        "start": "node ./build/app.js",
         "postinstall": "tsc",
         "build": "tsc && npm run start",
         "watch-node": "nodemon build/app.js",
