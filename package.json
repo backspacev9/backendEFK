@@ -6,7 +6,7 @@
         "build": "tsc && npm run start",
         "watch-node": "nodemon build/app.js",
         "watch-ts": "tsc -w",
-        "deploy": "git add . && git commit -m Heroku && git push heroku master"
+        "deploy": "git add . && git commit -m Heroku && git push"
     },
     "dependencies": {
         "@types/mocha": "^8.2.3",
