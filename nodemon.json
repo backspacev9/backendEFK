@@ -1,5 +1,10 @@
 {
   "verbose": false,
+  "events": {
+    "restart": "kill-port 3000",
+    "crash": "kill-port 3000"
+  },
+  "delay": "1500",
   "ignore": ["node_modules"],
   "watch": ["src"],
   "exec": "npx ts-node ./src/app.ts",
