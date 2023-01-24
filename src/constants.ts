@@ -1,6 +1,6 @@
 import {CategoryWithCards} from "./interfaces";
 
-export const cards: Array<CategoryWithCards> = [
+export const CARDS: Array<CategoryWithCards> = [
   {
     category: {id: 1, name: "Emotions", image: "img/happy.jpg"},
     cards: [
