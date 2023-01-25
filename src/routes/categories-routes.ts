@@ -1,23 +1,12 @@
-import express, {Router} from "express";
-import {CARDS} from "../constants";
-import {Category, CategoryWithCards} from "../interfaces";
+import {Router} from "express";
+import * as CategoriesController from "../controllers/category-controller";
 
 const router = Router({mergeParams: true});
 
-router.get("/categories", async (req, res) => {
-  const categories: Array<Category> = CARDS.map((el) => el.category);
-  res.json(categories);
-});
-router.get("/categories/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const categoryId = CARDS.findIndex((el) => el.category.id === id);
-  const category: CategoryWithCards = {
-    category: CARDS[categoryId].category,
-    cards: CARDS[categoryId].cards,
-  };
-  res.send(category);
-});
-router.post("/categories", (req, res) => {});
-router.delete("/categories", (req, res) => {});
+router.get("/categories", CategoriesController.getAllCategories);
+router.get("/categories/:id", CategoriesController.getSingleCategory);
+router.post("/categories", CategoriesController.addCategory);
+router.put("/categories/:id", CategoriesController.editCategory);
+router.delete("/categories/:id", CategoriesController.deleteCategory);
 
 export default router;
