@@ -9,4 +9,5 @@ export const db = new pg.Pool({
   host: process.env.DB_HOST,
   port: 5432,
   database: process.env.DB_USER,
+  ssl: true,
 });
