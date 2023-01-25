@@ -29,7 +29,7 @@ export const getCardsByCategory = async (req: Request, res: Response) => {
 export const addCard = async (req: Request, res: Response) => {
   const {word, translation, imagesrc, audiosrc, category_id}: RequestCard = req.body;
   const query = await db.query(
-    `INSERT INTO card (word, translation,imageSrc,audioSrc,category_id)
+    `INSERT INTO card (word, translation,imagesrc,audiosrc,category_id)
                        VALUES ($1, $2, $3, $4, $5)`,
     [word, translation, imagesrc, audiosrc, category_id]
   );
@@ -41,7 +41,7 @@ export const editCard = async (req: Request, res: Response) => {
   const {word, translation, imagesrc, audiosrc, category_id}: RequestCard = req.body;
   const query = await db.query(
     `UPDATE card
-     SET word = $1, translation = $2,imageSrc = $3,audioSrc = $4,category_id = $5
+     SET word = $1, translation = $2,imagesrc = $3,audiosrc = $4,category_id = $5
      where id = ${id}`,
     [word, translation, imagesrc, audiosrc, category_id]
   );
