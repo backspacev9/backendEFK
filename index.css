@@ -1,0 +1,4 @@
+#iframeFeedback html body .badge {
+  max-width: unset;
+  background-color: blueviolet;
+}

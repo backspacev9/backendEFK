@@ -1,5 +1,12 @@
-import {Request, Response} from "express";
+import {Request, Response, Express} from "express";
+import {v2 as cloudinary} from "cloudinary";
 import {db} from "../db";
+import path from "path";
+import * as dotenv from "dotenv";
+import upload from "multer";
+import multer from "multer";
+
+
 
 interface RequestCard {
   word: string;
@@ -8,6 +15,14 @@ interface RequestCard {
   audiosrc: string;
   category_id: number;
 }
+
+
+
+export const cardIamgeUpload = async (req: Request, res: Response) => {
+  const file = req.file;
+  console.log(file);
+  res.json(file);
+};
 export const getAllCards = async (req: Request, res: Response) => {
   const cards = await db.query("SELECT * FROM card");
   res.json(cards.rows);
