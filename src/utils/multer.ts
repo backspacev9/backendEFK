@@ -8,7 +8,7 @@ multer({
 
   //   if (!file.mimetype.match(/png||jpeg||jpg||gif$i/)) {
   //     // You can always pass an error if something goes wrong:
-  //     console.log("no match file");
+  //
   //     return;
   //   }
 

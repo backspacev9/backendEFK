@@ -2,10 +2,10 @@
   "name": "backendefk",
   "scripts": {
     "dev": "nodemon ./build/app.js",
+    "watch-ts": "tsc -w",
     "start": "tsc -w && node ./build/app.js",
     "postinstall": "tsc",
     "build": "tsc",
-    "watch-ts": "tsc -w",
     "deploy": "git commit -am Heroku && git push heroku master"
   },
   "dependencies": {
