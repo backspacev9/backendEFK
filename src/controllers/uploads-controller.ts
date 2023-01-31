@@ -114,7 +114,7 @@ export const getVideos = async (req: Request, res: Response) => {
       resource_type: el.resource_type,
       uploaded_at: el.uploaded_at,
       bytes: el.bytes,
-      url: `${uploadPath.cloudinaryAudio}${el.public_id}.${el.format}`,
+      url: `${uploadPath.cloudinaryVideo}${el.public_id}.${el.format}`,
       duration: el.duration,
     });
   });
