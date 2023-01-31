@@ -6,8 +6,6 @@ import * as dotenv from "dotenv";
 import upload from "multer";
 import multer from "multer";
 
-
-
 interface RequestCard {
   word: string;
   translation: string;
@@ -16,13 +14,6 @@ interface RequestCard {
   category_id: number;
 }
 
-
-
-export const cardIamgeUpload = async (req: Request, res: Response) => {
-  const file = req.file;
-  console.log(file);
-  res.json(file);
-};
 export const getAllCards = async (req: Request, res: Response) => {
   const cards = await db.query("SELECT * FROM card");
   res.json(cards.rows);

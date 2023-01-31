@@ -1,8 +1,10 @@
-import {Request, Response} from "express";
+import express, {Request, Response} from "express";
 import {v2 as cloudinary} from "cloudinary";
 import * as dotenv from "dotenv";
 import path, {format} from "path";
 import {uploadPath} from "../constants";
+import multer from "../utils/multer";
+import bufferToDataUrl from "buffer-to-data-url";
 
 dotenv.config({path: path.join(__dirname, "../.env")});
 cloudinary.config({
@@ -20,9 +22,38 @@ interface FileResponse {
   bytes: number;
   url: string;
 }
+
 interface AudioFileResponse extends FileResponse {
   duration: number;
 }
+
+export const imageUpload = async (req: Request, res: Response) => {
+  const files = req.files as Express.Multer.File[];
+  const paths = files?.map((el) => el.buffer);
+  //console.log(paths);
+  if (files) {
+    for await (const file of files) {
+      const {buffer} = file;
+      const dataUrl = await bufferToDataUrl(file.mimetype, buffer);
+      const fileName = file.originalname.replace(/\.[^/.]+$/, "");
+      await cloudinary.uploader
+        .upload(dataUrl, {
+          use_filename: true,
+          public_id: `${fileName}`,
+          resource_type: "image",
+          folder: "img",
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+  }
+
+  //console.log(files);
+
+  res.json({message: "files uploaded", files: files});
+};
+
 export const getImages = async (req: Request, res: Response) => {
   const result: Array<FileResponse> = await cloudinary.search
     .expression("folder=img")

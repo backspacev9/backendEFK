@@ -10,7 +10,6 @@ router.get("/cards/:id", CardController.getSingleCard);
 router.get("/cards/category/:id", CardController.getCardsByCategory);
 
 router.post("/cards", CardController.addCard);
-router.post("/cards/image", multer().single("image"), CardController.cardIamgeUpload);
 
 router.put("/cards/:id", CardController.editCard);
 
