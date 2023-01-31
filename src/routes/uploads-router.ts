@@ -12,6 +12,7 @@ router.post(
   multer({storage: memoryStorage()}).any(),
   UploadsController.imageUpload
 );
+router.delete("/uploads", UploadsController.fileDelete);
 
 router.get("/uploads/audios", UploadsController.getAudios);
 router.post("/uploads/audios", multer().array("audio"), UploadsController.imageUpload);

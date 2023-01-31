@@ -30,6 +30,7 @@ interface AudioFileResponse extends FileResponse {
 export const imageUpload = async (req: Request, res: Response) => {
   const files = req.files as Express.Multer.File[];
   const paths = files?.map((el) => el.buffer);
+  let resolve = null;
   //console.log(paths);
   if (files) {
     for await (const file of files) {
@@ -44,14 +45,24 @@ export const imageUpload = async (req: Request, res: Response) => {
           folder: "img",
         })
         .then((res) => {
-          console.log(res);
+          resolve = res;
         });
     }
   }
+  res.json({message: "files uploaded", res: resolve});
+};
 
-  //console.log(files);
+export const fileDelete = async (req: Request, res: Response) => {
+  const ids: string[] = req.body.public_ids;
+  let resolve: [] = [];
 
-  res.json({message: "files uploaded", files: files});
+  for await (const id of ids) {
+    await cloudinary.uploader.destroy(id, function (err, result) {
+      // resolve.push(result);
+    });
+  }
+
+  res.json({message: "files deleted", res: resolve});
 };
 
 export const getImages = async (req: Request, res: Response) => {
