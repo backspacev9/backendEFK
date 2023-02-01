@@ -26,7 +26,7 @@ export const getSingleCard = async (req: Request, res: Response) => {
 export const getCardsByCategory = async (req: Request, res: Response) => {
   const {id} = req.params;
   const cards =
-    await db.query(`SELECT card.id,card.word,card.translation,card.imagesrc,card.audiosrc
+    await db.query(`SELECT card.id,card.word,card.translation,card.imagesrc,card.audiosrc,card.category_id
       FROM card left join category 
       on card.category_id = category.id 
       where category.id = ${id}`);
