@@ -9,7 +9,7 @@ import {RequestCard} from "../interfaces";
 
 export const getAllCards = async (req: Request, res: Response) => {
   const cards =
-    await db.query(`SELECT card.id,card.word,card.translation,card.imagesrc,card.audiosrc,card.category_id,category.name
+    await db.query(`SELECT card.id,card.word,card.translation,card.imagesrc,card.audiosrc,card.category_id,category.name as category
       FROM card left join category 
       on card.category_id = category.id 
       `);
