@@ -5,17 +5,14 @@ import path from "path";
 import * as dotenv from "dotenv";
 import upload from "multer";
 import multer from "multer";
-
-interface RequestCard {
-  word: string;
-  translation: string;
-  imagesrc: string;
-  audiosrc: string;
-  category_id: number;
-}
+import {RequestCard} from "../interfaces";
 
 export const getAllCards = async (req: Request, res: Response) => {
-  const cards = await db.query("SELECT * FROM card");
+  const cards =
+    await db.query(`SELECT card.id,card.word,card.translation,card.imagesrc,card.audiosrc,card.category_id,category.name
+      FROM card left join category 
+      on card.category_id = category.id 
+      `);
   res.json(cards.rows);
 };
 export const getSingleCard = async (req: Request, res: Response) => {

@@ -14,6 +14,14 @@ export interface CategoryWithCards {
   category: Category;
   cards: Array<Card>;
 }
+
+export interface RequestCard {
+  word: string;
+  translation: string;
+  imagesrc: string;
+  audiosrc: string;
+  category_id: number;
+}
 export interface FileResponse {
   public_id: string;
   folder: string;
