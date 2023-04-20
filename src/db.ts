@@ -8,6 +8,6 @@ export const db = new pg.Pool({
   password: process.env.DB_PASS,
   host: process.env.DB_HOST,
   port: 5432,
-  database: process.env.DATABASE,
+  database: "htczsujt_uo0p",
   ssl: true,
 });
