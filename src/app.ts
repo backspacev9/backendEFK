@@ -32,7 +32,7 @@ app.listen(PORT, () => {
 });
 
 const upServer = () => {
-  const timeToUpMinutes = 14; //interval in minutes
+  const timeToUpMinutes = 1; //interval in minutes
   const seconds = timeToUpMinutes * 60;
   setInterval(() => {
     router.route("/cards");
